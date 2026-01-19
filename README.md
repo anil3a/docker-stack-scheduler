@@ -1,8 +1,5 @@
-# manage-docker-container-stack
-Manage Docker containers and stacks schedules
-
-
 # Docker Stack Scheduler (Go-based)
+Manage Docker containers and stacks schedules
 
 ## Overview
 
