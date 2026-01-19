@@ -7,11 +7,11 @@
 
 #### 🔹 Backend Foundation
 
-* [ ] Initialize Go module
-* [ ] Basic HTTP server (`net/http`)
-* [ ] Health check endpoint
-* [ ] Config loader (env + file)
-* [ ] Graceful shutdown handling
+* [x] Initialize Go module
+* [x] Basic HTTP server (`net/http`)
+* [x] Health check endpoint
+* [x] Config loader (env + file)
+* [x] Graceful shutdown handling
 
 #### 🔹 Docker Integration
 

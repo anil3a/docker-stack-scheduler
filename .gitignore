@@ -30,3 +30,14 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+
+# reactjs and vuejs build output
+/dist
+/build
+/node_modules
+
+
+# Go tmp files
+*.tmp
+/tmp/

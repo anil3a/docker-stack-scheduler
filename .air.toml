@@ -1,0 +1,21 @@
+# .air.toml
+
+root = "."
+tmp_dir = "tmp"
+
+[build]
+# Explicit build command
+cmd = "go build -o tmp/main ./cmd/server"
+# Binary that Air will run
+bin = "tmp/main"
+
+[log]
+time = true
+
+[watch]
+dirs = ["cmd", "internal", "docker", "data"]
+# ignore tmp folder to prevent recursion
+exclude = ["tmp"]
+
+[color]
+main = "cyan"
