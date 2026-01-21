@@ -15,8 +15,8 @@
 
 #### 🔹 Docker Integration
 
-* [ ] Connect to Docker socket
-* [ ] List containers
+* [x] Connect to Docker socket
+* [x] List containers
 * [ ] Read container labels
 * [ ] Detect docker-compose stacks
 * [ ] Group containers by stack

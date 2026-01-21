@@ -1,0 +1,20 @@
+services:
+  scheduler:
+    build:
+      context: .
+      dockerfile: docker/builder/Dockerfile
+    container_name: stack-scheduler-builder
+    volumes:
+      - .:/app       # Mount your source code
+      - ./data:/data # SQLite persistence
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8044:8044"
+    stdin_open: true
+    tty: true
+    environment:
+      APP_ENV: dev
+      APP_PORT: 8044
+      DB_PATH: /data/app.db
+      AIR_POLL: true
+      JWT_SECRET: builder-secret-change-me

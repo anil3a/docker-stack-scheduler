@@ -1,21 +1,39 @@
 # .air.toml
 
-root = "."
+root = "/src"
 tmp_dir = "tmp"
 
 [build]
 # Explicit build command
-cmd = "go build -o tmp/main ./cmd/server"
-# Binary that Air will run
-bin = "tmp/main"
+cmd = "go build -o ./tmp/main ./cmd/server"
+
+# Use entrypoint (bin is deprecated in v1.64)
+entrypoint = ["./tmp/main"]
+
+# Only watch Go + common text; add mod/sum so dep changes rebuild
+include_ext = ["go", "mod", "sum", "tpl", "tmpl", "html"]
+
+# Only watch these dirs in the project (relative to `root`)
+include_dir = ["cmd", "internal", "data"]
+
+# Exclude build and docker dirs to avoid noisy rebuilds
+exclude_dir = ["tmp", "docker", ".git"]
+
+# Place air's build log under tmp
+log = "build-errors.log"
+
+# Polling can help under Docker Desktop
+poll = true
+poll_interval = 500
+
+# Clean shutdown behaviour
+stop_on_error = true
+send_interrupt = false
+kill_delay = 500
+rerun = false
+rerun_delay = 500
 
 [log]
 time = true
-
-[watch]
-dirs = ["cmd", "internal", "docker", "data"]
-# ignore tmp folder to prevent recursion
-exclude = ["tmp"]
-
-[color]
-main = "cyan"
+main_only = false
+silent = false

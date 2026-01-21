@@ -10,15 +10,15 @@ RUN apk add --no-cache \
 # Install air (hot reload)
 RUN go install github.com/air-verse/air@latest
 
-WORKDIR /app
+WORKDIR /src
 
 # Pre-copy mod files for cache
 COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy source
-COPY . .
+# COPY . .
 
 EXPOSE 8080
 
-CMD ["air"]
+CMD ["air", "-c", "/src/.air.toml"]

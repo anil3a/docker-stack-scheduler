@@ -4,6 +4,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"stack-scheduler/internal/api"
 )
 
 func main() {
@@ -14,11 +16,8 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	// Health check
-	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("ok"))
-	})
+	// Register API routes
+	api.RegisterRoutes(mux)
 
 	log.Println("Starting server on :" + port)
 	log.Fatal(http.ListenAndServe(":"+port, mux))
